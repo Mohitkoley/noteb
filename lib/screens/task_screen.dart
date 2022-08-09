@@ -8,6 +8,7 @@ import 'package:noteb/widgets/task_list.dart';
 import '../model/task.dart';
 
 class TaskScreen extends StatelessWidget {
+  static const id = "task_screen";
   TaskScreen({Key? key}) : super(key: key);
 
   TextEditingController titleController = TextEditingController();

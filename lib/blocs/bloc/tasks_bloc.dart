@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../model/task.dart';
@@ -12,6 +11,7 @@ class TasksBloc extends HydratedBloc<TasksEvent, TasksState> {
     on<AddTask>(_onAddTask);
     on<UpdateTask>(_onUpdateTask);
     on<DeleteTask>(_onDeleteTask);
+    on<RemoveTask>(_onRemoveTask);
   }
 
   void _onAddTask(AddTask event, Emitter<TasksState> emit) {
@@ -38,6 +38,13 @@ class TasksBloc extends HydratedBloc<TasksEvent, TasksState> {
   void _onDeleteTask(DeleteTask event, Emitter<TasksState> emit) {
     final state = this.state;
     emit(TasksState(allTasks: List.from(state.allTasks)..remove(event.task)));
+  }
+
+  void _onRemoveTask(RemoveTask event, Emitter<TasksState> emit) {
+    final state = this.state;
+    emit(TasksState(
+        allTasks: List.from(state.removedTask)
+          ..add(event.task.copyWith(isDeleted: true))));
   }
 
   @override
