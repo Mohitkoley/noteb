@@ -13,7 +13,8 @@ class RecycleBin extends StatelessWidget {
     return BlocBuilder<TasksBloc, TasksState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(actions: [
+          appBar:
+              AppBar(title: Text("Recycle Bin"), centerTitle: true, actions: [
             IconButton(
                 onPressed: () {},
                 icon: const Icon(

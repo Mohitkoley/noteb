@@ -29,7 +29,7 @@ class TaskScreen extends StatelessWidget {
     return BlocBuilder<TasksBloc, TasksState>(builder: (context, state) {
       List<Task> tasks = state.allTasks;
       return Scaffold(
-        appBar: AppBar(actions: [
+        appBar: AppBar(title: Text("Tasks"), centerTitle: true, actions: [
           IconButton(
               onPressed: () => _addTask(context),
               icon: const Icon(

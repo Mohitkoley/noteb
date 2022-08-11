@@ -22,7 +22,7 @@ class MyDrawer extends StatelessWidget {
             BlocBuilder<TasksBloc, TasksState>(
               builder: (context, state) {
                 return GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed(TaskScreen.id),
+                  onTap: () => Navigator.of(context).pushReplacementNamed(TaskScreen.id),
                   child: ListTile(
                       leading: const Icon(Icons.folder_special),
                       title: const Text("Home"),
@@ -34,7 +34,7 @@ class MyDrawer extends StatelessWidget {
             BlocBuilder<TasksBloc, TasksState>(
               builder: (context, state) {
                 return GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed(RecycleBin.id),
+                  onTap: () => Navigator.of(context).pushReplacementNamed(RecycleBin.id),
                   child: ListTile(
                     leading: const Icon(Icons.delete),
                     title: const Text("Bin"),
