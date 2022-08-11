@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noteb/blocs/bloc/tasks_bloc.dart';
+import 'package:noteb/blocs/task_bloc/tasks_bloc.dart';
 import 'package:noteb/screens/add_task_screen.dart';
 import 'package:noteb/screens/my_drawer.dart';
 import 'package:noteb/widgets/task_list.dart';

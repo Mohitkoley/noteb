@@ -21,7 +21,7 @@ class RecycleBin extends StatelessWidget {
                   Icons.add,
                 ))
           ]),
-          drawer: const MyDrawer(),
+          drawer: MyDrawer(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

@@ -4,7 +4,7 @@ import '../blocs/bloc_export.dart';
 import 'task_screen.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  MyDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,8 @@ class MyDrawer extends StatelessWidget {
             BlocBuilder<TasksBloc, TasksState>(
               builder: (context, state) {
                 return GestureDetector(
-                  onTap: () => Navigator.of(context).pushReplacementNamed(TaskScreen.id),
+                  onTap: () =>
+                      Navigator.of(context).pushReplacementNamed(TaskScreen.id),
                   child: ListTile(
                       leading: const Icon(Icons.folder_special),
                       title: const Text("Home"),
@@ -34,7 +35,8 @@ class MyDrawer extends StatelessWidget {
             BlocBuilder<TasksBloc, TasksState>(
               builder: (context, state) {
                 return GestureDetector(
-                  onTap: () => Navigator.of(context).pushReplacementNamed(RecycleBin.id),
+                  onTap: () =>
+                      Navigator.of(context).pushReplacementNamed(RecycleBin.id),
                   child: ListTile(
                     leading: const Icon(Icons.delete),
                     title: const Text("Bin"),
@@ -43,6 +45,19 @@ class MyDrawer extends StatelessWidget {
                 );
               },
             ),
+            const Divider(),
+            BlocBuilder<SwitchBloc, SwitchState>(
+              builder: (context, state) {
+                return Switch(
+                  value: state.switchValue,
+                  onChanged: (value) {
+                    value
+                        ? context.read<SwitchBloc>().add(SwitchOnEvent())
+                        : context.read<SwitchBloc>().add(SwitchOffEvent());
+                  },
+                );
+              },
+            )
           ],
         ),
       ),
