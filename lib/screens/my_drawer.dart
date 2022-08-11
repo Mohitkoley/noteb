@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noteb/screens/recycle_bin.dart';
-
 import '../blocs/bloc_export.dart';
 import 'task_screen.dart';
 
