@@ -3,7 +3,7 @@ import 'package:noteb/blocs/bloc_export.dart';
 import 'package:noteb/screens/tabs_screen.dart';
 import 'package:noteb/services/app_router.dart';
 
-import 'package:noteb/screens/task_screen.dart';
+import 'package:noteb/screens/pending_screen.dart';
 import 'package:noteb/services/app_theme.dart';
 import 'package:path_provider/path_provider.dart';
 
