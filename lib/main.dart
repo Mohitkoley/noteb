@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noteb/blocs/bloc_export.dart';
+import 'package:noteb/screens/tabs_screen.dart';
 import 'package:noteb/services/app_router.dart';
 
 import 'package:noteb/screens/task_screen.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
             theme: state.switchValue
                 ? AppThemes.appThemeData[AppTheme.darkTheme]
                 : AppThemes.appThemeData[AppTheme.lightTheme],
-            home: TaskScreen(),
+            home: const TabsScreen(),
             onGenerateRoute: appRouter.onGenrateRoute,
           );
         },

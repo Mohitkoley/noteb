@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:noteb/screens/recycle_bin.dart';
+import 'package:noteb/screens/tabs_screen.dart';
 import '../blocs/bloc_export.dart';
-import 'task_screen.dart';
+import 'pending_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   MyDrawer({Key? key}) : super(key: key);
@@ -23,11 +24,12 @@ class MyDrawer extends StatelessWidget {
               builder: (context, state) {
                 return GestureDetector(
                   onTap: () =>
-                      Navigator.of(context).pushReplacementNamed(TaskScreen.id),
+                      Navigator.of(context).pushReplacementNamed(TabsScreen.id),
                   child: ListTile(
                       leading: const Icon(Icons.folder_special),
                       title: const Text("Home"),
-                      trailing: Text("${state.allTasks.length}")),
+                      trailing: Text(
+                          "${state.pendingTasks.length} | ${state.completedTasks.length}")),
                 );
               },
             ),
