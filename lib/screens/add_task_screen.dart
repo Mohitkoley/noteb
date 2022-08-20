@@ -27,40 +27,46 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         children: [
           const Text("Add Task", style: TextStyle(fontSize: 24)),
           const SizedBox(height: 24),
-          TextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a title";
-              }
-              return null;
-            },
-            autofocus: true,
-            decoration: InputDecoration(
-                hintText: "Task title",
-                errorText: _validate ? "Title is required" : null,
-                errorStyle: const TextStyle(color: Colors.red),
-                label: const Text("Title"),
-                border: const OutlineInputBorder()),
-            controller: titleController,
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter a title";
+                }
+                return null;
+              },
+              autofocus: true,
+              decoration: InputDecoration(
+                  hintText: "Task title",
+                  errorText: _validate ? "Title is required" : null,
+                  errorStyle: const TextStyle(color: Colors.red),
+                  label: const Text("Title"),
+                  border: const OutlineInputBorder()),
+              controller: titleController,
+            ),
           ),
           const SizedBox(height: 24),
-          TextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a description";
-              }
-              return null;
-            },
-            autofocus: true,
-            minLines: 3,
-            maxLines: 5,
-            decoration: InputDecoration(
-                hintText: "Task Description",
-                errorText: _validate ? "description is required" : null,
-                errorStyle: const TextStyle(color: Colors.red),
-                label: const Text("Title"),
-                border: const OutlineInputBorder()),
-            controller: descriptionController,
+          Padding(
+            padding: const EdgeInsets.only(right: 5, left: 5),
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter a description";
+                }
+                return null;
+              },
+              autofocus: true,
+              minLines: 3,
+              maxLines: 5,
+              decoration: InputDecoration(
+                  hintText: "Task Description",
+                  errorText: _validate ? "description is required" : null,
+                  errorStyle: const TextStyle(color: Colors.red),
+                  label: const Text("Title"),
+                  border: const OutlineInputBorder()),
+              controller: descriptionController,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
