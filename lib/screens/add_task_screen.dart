@@ -17,6 +17,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   final formKey = GlobalKey<FormState>();
 
   TextEditingController titleController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +36,31 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             },
             autofocus: true,
             decoration: InputDecoration(
-                hintText: "Task Title",
+                hintText: "Task title",
                 errorText: _validate ? "Title is required" : null,
                 errorStyle: const TextStyle(color: Colors.red),
                 label: const Text("Title"),
                 border: const OutlineInputBorder()),
             controller: titleController,
+          ),
+          const SizedBox(height: 24),
+          TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter a description";
+              }
+              return null;
+            },
+            autofocus: true,
+            minLines: 3,
+            maxLines: 5,
+            decoration: InputDecoration(
+                hintText: "Task Description",
+                errorText: _validate ? "description is required" : null,
+                errorStyle: const TextStyle(color: Colors.red),
+                label: const Text("Title"),
+                border: const OutlineInputBorder()),
+            controller: descriptionController,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,7 +85,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     if (formKey.currentState!.validate()) {
       setState(() {
         titleController.text.isEmpty ? _validate = true : _validate = false;
-        Task task = Task(title: titleController.text, id: const Uuid().v4());
+        Task task = Task(
+            title: titleController.text,
+            id: const Uuid().v4(),
+            description: descriptionController.text);
         context.read<TasksBloc>().add(AddTask(task: task));
       });
       Navigator.pop(context);
