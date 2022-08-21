@@ -3,21 +3,31 @@ import 'package:noteb/blocs/bloc_export.dart';
 import 'package:noteb/model/task.dart';
 import 'package:uuid/uuid.dart';
 
-class AddTaskScreen extends StatefulWidget {
-  AddTaskScreen({
-    Key? key,
-  }) : super(key: key);
+class EditTaskScreen extends StatefulWidget {
+  Task oldTask;
+  EditTaskScreen({Key? key, required this.oldTask}) : super(key: key);
 
   @override
-  State<AddTaskScreen> createState() => _AddTaskScreenState();
+  State<EditTaskScreen> createState() => _EditTaskScreenState();
 }
 
-class _AddTaskScreenState extends State<AddTaskScreen> {
+class _EditTaskScreenState extends State<EditTaskScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    title = widget.oldTask.title;
+    description = widget.oldTask.description;
+  }
+
   bool _validate = false;
+  static late String title;
+  static late String description;
   final formKey = GlobalKey<FormState>();
 
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
+  TextEditingController titleController = TextEditingController(text: title);
+  TextEditingController descriptionController =
+      TextEditingController(text: description);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +35,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       key: formKey,
       child: Column(
         children: [
-          const Text("Add Task", style: TextStyle(fontSize: 24)),
+          const Text("Edit Task", style: TextStyle(fontSize: 24)),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
@@ -77,7 +87,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
               ElevatedButton(
                   onPressed: () => validator(context),
-                  child: const Text("Add")),
+                  child: const Text("Save")),
             ],
           )
         ],
