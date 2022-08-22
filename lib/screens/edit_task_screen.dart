@@ -21,8 +21,8 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   }
 
   bool _validate = false;
-  static late String title;
-  static late String description;
+  static String title = "";
+  static String description = "";
   final formKey = GlobalKey<FormState>();
 
   TextEditingController titleController = TextEditingController(text: title);

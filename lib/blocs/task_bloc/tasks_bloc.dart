@@ -109,21 +109,22 @@ class TasksBloc extends HydratedBloc<TasksEvent, TasksState> {
   void _onMarkFavoriteorUnFavoriteTask(
       MarkFavoriteorUnFavoriteTask event, Emitter<TasksState> emit) {
     final state = this.state;
+    final task = event.task;
     List<Task> pendingTasks = state.pendingTasks;
     List<Task> completedTasks = state.completedTasks;
     List<Task> favoriteTasks = state.favoriteTasks;
-    if (event.task.isDone == false) {
-      if (event.task.isFavorite == false) {
-        int index = pendingTasks.indexOf(event.task);
+    if (task.isDone == false) {
+      if (task.isFavorite == false) {
+        int index = pendingTasks.indexOf(task);
         pendingTasks = List.from(state.pendingTasks)
-          ..removeAt(index)
-          ..add(event.task.copyWith(isFavorite: true));
-        favoriteTasks.insert(index, event.task.copyWith(isFavorite: true));
+          ..remove(task)
+          ..insert(index, task.copyWith(isFavorite: true));
+        favoriteTasks.insert(0, event.task.copyWith(isFavorite: true));
       } else {
         int index = pendingTasks.indexOf(event.task);
         pendingTasks = List.from(state.pendingTasks)
-          ..removeAt(index)
-          ..add(event.task.copyWith(isFavorite: false));
+          ..remove(task)
+          ..insert(index, task.copyWith(isFavorite: false));
         favoriteTasks.remove(event.task);
       }
     } else {

@@ -14,7 +14,7 @@ class FavoriteTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TasksBloc, TasksState>(builder: (context, state) {
-      List<Task> favoriteTasks = state.pendingTasks;
+      List<Task> favoriteTasks = state.favoriteTasks;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

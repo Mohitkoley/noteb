@@ -77,8 +77,8 @@ class TaskTile extends StatelessWidget {
             ),
             PopupMenu(
               editTaskCallback: () {
-                Navigator.pop(context);
                 _editTask(context);
+                Navigator.pop(context);
               },
               task: task,
               likeOrDislikeCallback: () => context
@@ -95,23 +95,3 @@ class TaskTile extends StatelessWidget {
     );
   }
 }
-
-
-
-// ListTile(
-//       title: Text(task.title,
-//           overflow: TextOverflow.ellipsis,
-//           style: TextStyle(
-//               decoration: task.isDone!
-//                   ? TextDecoration.lineThrough
-//                   : TextDecoration.none)),
-//       trailing: Checkbox(
-//         value: task.isDone,
-//         onChanged: task.isDeleted == false
-//             ? (value) {
-//                 context.read<TasksBloc>().add(UpdateTask(task: task));
-//               }
-//             : null,
-//       ),
-//       onLongPress: () => _removeOrDeleted(context, task),
-//     )
